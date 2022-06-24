@@ -42,4 +42,8 @@ public class MemoryMemberRepository implements MemberRepository{
         //  values가 모두 담긴 ArrayList가 생성됩니다.
         return new ArrayList<>(store.values());
     }
+
+    public void clearStore(){
+        store.clear();
+    }
 }

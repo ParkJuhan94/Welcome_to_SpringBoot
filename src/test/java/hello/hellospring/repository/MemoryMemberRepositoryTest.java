@@ -2,12 +2,22 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.*;
 
 //다른데서 가져다 쓸 class 가 아니기 때문에 public 으로 지정할 필요 없음
 class MemoryMemberRepositoryTest {
 
-    MemberRepository repository = new MemoryMemberRepository();
+    MemoryMemberRepository repository = new MemoryMemberRepository();
+
+    @AfterEach
+    public void afterEach(){
+        repository.clearStore();
+    }
 
     @Test
     public void save(){
@@ -23,8 +33,43 @@ class MemoryMemberRepositoryTest {
         //2번째 방법 : 쓰기 불편함
         //Assertions.assertEquals(member, result);    //(기댓값, 결괏값)
 
-        //3번째 방법 : 제일 많이 씀씀
-        Assertions.assertThat(member).isEqualTo(result);
+        //3번째 방법 : 제일 많이 씀
+        //Assertions.assertThat(member).isEqualTo(result);
+        //Assertions에서 alt + enter 로 static import 해주면 아래처럼 바로 assertThat 호출 가능
+        assertThat(member).isEqualTo(result);
+    }
+
+    @Test
+    public void findByName(){
+        Member member1 = new Member();
+        member1.setName("spring1");
+        repository.save(member1);
+
+        //refactor 단축키 : shift + F6
+        Member member2 = new Member();
+        member2.setName("spring2");
+        repository.save(member2);
+
+        Member result = repository.findByName("spring1").get();
+
+        assertThat(result).isEqualTo(member1);
+        //assertThat(result).isEqualTo(member2);    //이렇게 하면 error
+    }
+
+    @Test
+    public void findAll(){
+        Member member1 = new Member();
+        member1.setName("spring1");
+        repository.save(member1);
+
+        //refactor 단축키 : shift + F6
+        Member member2 = new Member();
+        member2.setName("spring2");
+        repository.save(member2);
+
+        List<Member> result = repository.findAll();
+
+        assertThat(result.size()).isEqualTo(2);
     }
 }
 
