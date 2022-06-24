@@ -18,11 +18,14 @@ public class MemoryMemberRepository implements MemberRepository{
 
     @Override
     public Optional<Member> findById(Long id) {
+        //  get을 했을때 null일 수 있어서 Optional로 감싸고 return 한다.
         return Optional.ofNullable(store.get(id));
     }
 
     @Override
     public Optional<Member> findByName(String name) {
+        //  변수 store의 value는 Member 객체이기 때문에 다 돌면서
+        //  파라메터와 같은 name을 가진 member가 있으면 return
         return store.values().stream()
                 .filter(member -> member.getName().equals(name))
                 .findAny();
