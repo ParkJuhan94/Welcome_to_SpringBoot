@@ -18,6 +18,8 @@ public class MemoryMemberRepository implements MemberRepository{
         return member;
     }
 
+    //Optional : Java8에 나온 기능입니다.
+    //최근에는 null 반환보다 Optional을 더 사용합니다.
     @Override
     public Optional<Member> findById(Long id) {
         //  get을 했을때 null일 수 있어서 Optional로 감싸고 return 한다.
