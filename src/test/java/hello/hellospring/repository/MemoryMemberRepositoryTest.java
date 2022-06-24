@@ -76,7 +76,7 @@ class MemoryMemberRepositoryTest {
 //Optonal은 get()으로 해당 객체를 가져올 수 있습니다.
 //실무에서는 junit의 Assertions보다 assertj의 Assertions를 더 많이 사용합니다.
 
-//@AfterEach: 한번에 여러 테스트를 실행하면 메모리 DB에 직전 테스트의 결과가 남을 수 있습니다.
+//@AfterEach: 한번에 여러 테스트를 실행하면 메모리 DB에 직전 테스트의 결과가 남을 수 있습니다.(위에서는 result의 중복)
 // 이렇게 되면 이전 테스트 때문에 다음 테스트가 실패할 가능성이 있습니다.
 // @AfterEach를 사용하면 각 테스트가 종료될 때 마다 이 기능을 실행합니다.
 
