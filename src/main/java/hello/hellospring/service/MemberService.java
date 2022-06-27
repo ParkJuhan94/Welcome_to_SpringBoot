@@ -9,7 +9,11 @@ import java.util.Optional;
 
 public class MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemoryMemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /**
      * 회원 가입
@@ -39,3 +43,7 @@ public class MemberService {
     }
 
 }
+
+//result.ifPresent(m -> { throw new IllegalStateException("이미 존재하는 회원입니다."); });
+//        ifPresent는 Optional에 null이 아닌 객체가 존재하는 경우 어떠한 로직을 수행합니다.
+//Service 클래스의 메소드 명은 비즈니스에 가까운 메소드 명을 사용해야 합니다.
