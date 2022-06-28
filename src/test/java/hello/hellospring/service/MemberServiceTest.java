@@ -77,7 +77,7 @@ class MemberServiceTest {
 
 //@BeforeEach: 각 테스트 실행 전에 호출됩니다.
 //      테스트가 서로 영향이 없도록 항상 새로운 객체를 생성하고, 의존관계도 새로 맺어줍니다.
-//        MemoryMemberRepository를 생성하여 MemberService에 주입해줍니다.(DI)
+//        MemoryMemberRepository를 생성하여 MemberService에 주입해줍니다.(DI = dependency injection)
 //IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 //        특정 Exception이 발생하는지 테스트할 때 사용합니다.
 //        Exception 메시지도 테스트 할 수 있습니다.
