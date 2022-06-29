@@ -34,6 +34,8 @@ public class MemberController {
     2.@Service
     3.@Repository
  @SpringBootApplication 어노테이션이 선언된 패키지를 포함한 하위 패키지의 어노테이션만 스캔합니다.
+ (여기서는 main 메서드가 포함된 HelloSpringApplication class가 선언된 패키지인
+ hello.hellospring 패키지 하위에서만 어노테이션을 스캔)
 
  참고: 생성자에 @Autowired를 사용하면 객체 생성 시점에 스프링 컨테이너에서 해당 스프링 빈을 찾아서 주입합니다.
  생성자가 1개만 있으면 @Autowired는 생략할 수 있습니다.
