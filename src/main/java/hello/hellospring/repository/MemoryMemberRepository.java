@@ -1,9 +1,11 @@
 package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
     //  실무에서는 동시성 문제를 해결하기 위해 멤버 필드에 HashMap 대신 ConcurrentHashMap을 사용해야 합니다.
@@ -11,6 +13,9 @@ public class MemoryMemberRepository implements MemberRepository{
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
+    /**
+     * MemoryMemberRepository에 @Repository 어노테이션을 붙여줍니다.
+     */
     @Override
     public Member save(Member member) {
         member.setId(++sequence);
