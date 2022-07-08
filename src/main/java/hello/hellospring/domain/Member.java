@@ -1,10 +1,16 @@
 package hello.hellospring.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Member {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;    //  시스템이 정한 id
+    //  @Column(name = "username")  //컬럼명을 변경하고 싶을 때 이렇게 맵핑
     private String name;
+
 
     public Long getId() {
         return id;
